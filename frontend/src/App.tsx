@@ -5,28 +5,13 @@ import {
   // useNavigate,
 } from "react-router-dom";
 
-import Layout from "./layouts/Layout";
+import Home from "./pages/Home";
 
 const App = () => {
   return (
     <Router>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Layout>
-              <p>Homepage</p>
-            </Layout>
-          }
-        />
-        <Route
-          path="/search"
-          element={
-            <Layout>
-              <p>Search Page</p>
-            </Layout>
-          }
-        />
+        <Route path="/" element={<Home />} />
       </Routes>
     </Router>
   );
