@@ -5,13 +5,13 @@ import {
   // useNavigate,
 } from "react-router-dom";
 
-import Home from "./pages/Home";
+import Layout from "./layouts/Layout";
 
 const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Layout>{"Home"}</Layout>} />
       </Routes>
     </Router>
   );
