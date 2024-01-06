@@ -1,7 +1,9 @@
 import { useForm } from "react-hook-form";
+import { useMutation } from "react-query";
 import { Link } from "react-router-dom";
+import * as apiClient from "../api-Fetcher/api-client";
 
-type RegisterFormData = {
+export type RegisterFormData = {
   firstName: string;
   lastName: string;
   email: string;
@@ -17,8 +19,17 @@ const Register = () => {
     formState: { errors },
   } = useForm<RegisterFormData>();
 
+  const mutation = useMutation(apiClient.register, {
+    onSuccess: (data) => {
+      console.log(data);
+    },
+    onError: (error: Error) => {
+      console.log(error.message);
+    },
+  });
+
   const onSubmit = handleSubmit((data) => {
-    console.log(data);
+    mutation.mutate(data);
   });
 
   return (

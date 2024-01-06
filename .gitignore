@@ -1,3 +1,4 @@
 /backend/node_modules
 ignore.txt
 /backend/.env
+/frontend/.env

@@ -43,10 +43,14 @@ router.post(
         maxAge: 7 * 24 * 60 * 60 * 1000, // ? 7 days
       });
       console.log("Data is Stored in the DB");
-      return res.sendStatus(200);
+
+      // ! res.sendStatus(200);
+      // ! here we are not sending res.sendStatus(200) because the browser is trying to convert the return statement to .json format and falling apart
+      // * so we are using res.status(200) and res.send({ message: "User Registered OK" }) instead of res.sendStatus(200) and res.send({ message: "User Registered OK" })
+      return res.status(200).send({ message: "User Registered OK" });
     } catch (error) {
       res.status(500).json({ message: "Something went wrong" });
-      // ? here we are not explicitly consoling the error because they are coming from mongo DB and migh contain sensitive info
+      // ? here we are not explicitly consoling the error because they are coming from mongo DB and might contain sensitive info
     }
   }
 );
