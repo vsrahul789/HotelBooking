@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 const Header = () => {
   return (
-    <div className="bg-sky-600 pt-16 pb-10">
-      <div className="container mx-auto px-60 flex justify-between">
+    <div className="bg-sky-600 pt-10 pb-10">
+      <div className="container mx-auto flex justify-between">
         <span className="text-4xl text-white select-none font-display1 font-bold text-ellipsis leading-none tracking-tight">
           <Link to={"/"}>MERN Paradise</Link>
         </span>
