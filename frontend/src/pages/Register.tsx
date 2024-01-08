@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import { Link } from "react-router-dom";
 import * as apiClient from "../api-Fetcher/api-client";
+import { useAppContext } from "../context/AppContext";
 
 export type RegisterFormData = {
   firstName: string;
@@ -12,6 +13,8 @@ export type RegisterFormData = {
 };
 
 const Register = () => {
+  const { showToast } = useAppContext();
+
   const {
     register,
     watch,
@@ -20,11 +23,11 @@ const Register = () => {
   } = useForm<RegisterFormData>();
 
   const mutation = useMutation(apiClient.register, {
-    onSuccess: (data) => {
-      console.log(data);
+    onSuccess: () => {
+      showToast({ message: "Registered Successfully", type: "SUCCESS" });
     },
     onError: (error: Error) => {
-      console.log(error.message);
+      showToast({ message: error.message, type: "ERROR" });
     },
   });
 
@@ -133,7 +136,7 @@ const Register = () => {
             </span>
           )}
         </label>
-        <span className="flex justify-between sm:justify-center">
+        <span className="flex justify-between">
           <p>
             Already have an account?{" "}
             <Link
